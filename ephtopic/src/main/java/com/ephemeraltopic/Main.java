@@ -16,18 +16,14 @@ import java.util.Arrays;
 public class Main
 {
     private final JDA jda;
-    private static Main ephemeral_topic;
+    private static final Main ephemeral_topic = null;
     public static Guild guild;
     public static Logger logger;
 
     private Main( String[] args ) throws LoginException
     {
-        String token = Arrays.stream(args)
-                .map( s -> s.split(":") )
-                .filter( arr -> arr[0].equals("-token") )
-                .map( arr -> arr[1] )
-                .findFirst()
-                .orElse(null);
+        String token = ArgsSplitter.getAugmentValue("-token", args);
+        String guildId = ArgsSplitter.getAugmentValue("-guild", args);
 
         if ( token==null )
         {
@@ -48,6 +44,8 @@ public class Main
                 .setMemberCachePolicy(MemberCachePolicy.DEFAULT)
                 .setEventPassthrough(true)
                 .build();
+
+        guild = jda.getGuildById(guildId);
     }
 
     public static void main ( String[] args )
