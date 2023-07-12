@@ -2,6 +2,8 @@ package com.ephemeraltopic;
 
 
 import com.ephemeraltopic.data.name.ErrorMsgTemp;
+import com.ephemeraltopic.util.ArgsSplitter;
+import com.ephemeraltopic.util.Initialize;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Guild;
@@ -60,7 +62,7 @@ public class Main
             {
                 Main ephemeral_topic = new Main( args );
                 ephemeral_topic.jda.awaitReady();
-                // TODO configLoader
+                Initialize.initialize(ephemeral_topic.jda);
             }
             catch ( LoginException e )
             {

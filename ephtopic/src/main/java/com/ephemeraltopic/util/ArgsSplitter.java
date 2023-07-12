@@ -1,4 +1,4 @@
-package com.ephemeraltopic;
+package com.ephemeraltopic.util;
 
 import java.util.Arrays;
 
