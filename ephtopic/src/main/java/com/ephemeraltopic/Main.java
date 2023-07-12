@@ -11,7 +11,6 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
 import javax.security.auth.login.LoginException;
-import java.util.Arrays;
 
 public class Main
 {
@@ -74,10 +73,15 @@ public class Main
         }
     }
 
-    public static void exit ( int code, String msg )
+    public static Main getInstance()
+    {
+        return ephemeral_topic;
+    }
+
+    public static void exit (int code, String msg )
     {
         // TODO shutdown jda object
-        ephemeral_topic.jda.shutdown();
+        getInstance().jda.shutdown();
         if ( code < 1 )
         {
             logger .info(msg);
