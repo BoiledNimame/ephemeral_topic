@@ -14,7 +14,7 @@ public class Initialize
 
         CountDownLatch latch = new CountDownLatch(1);
         ConfigLoader thread = new ConfigLoader(latch);
-        thread.run();
+        thread.start();
 
         // await for Loading Config
         latch.await();

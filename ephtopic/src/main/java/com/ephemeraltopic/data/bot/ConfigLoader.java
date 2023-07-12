@@ -14,7 +14,7 @@ import java.util.concurrent.CountDownLatch;
 
 public class ConfigLoader extends Thread
 {
-    private CountDownLatch latch;
+    private final CountDownLatch latch;
     public ConfigLoader( CountDownLatch latch )
     {
         this.latch = latch;
