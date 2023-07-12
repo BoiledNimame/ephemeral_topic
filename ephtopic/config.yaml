@@ -1,0 +1,11 @@
+config:
+  # 招待リンク
+  "InviteLink": "https://discord.com/api/oauth2/authorize?client_id=1093631410549575731&permissions=4400647055408&scope=bot%20applications.commands"
+  # 稼働するサーバーのID
+  "ServerID" : "850020170835165188"
+  # Botが自動作成で生成したボイス・チャンネルはこのカテゴリ名のカテゴリを親に設定する。
+  "BotCategoryName" : "ephemeral_topic"
+  # Botが自動作成を適用するボイス・チャンネルのチャンネル名
+  "BotUseToGenerateVoiceChannel" : "generate"
+  # 生成されるボイス・チャンネルの末尾に付く文字
+  "GeneratedVoiceChannelNameSuffix" : "'s Room"
