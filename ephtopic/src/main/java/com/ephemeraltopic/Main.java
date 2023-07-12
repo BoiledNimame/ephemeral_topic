@@ -12,13 +12,11 @@ import org.apache.logging.log4j.LogManager;
 
 import javax.security.auth.login.LoginException;
 import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class Main
 {
     private final JDA jda;
-    private static Main ephemeraltopic;
+    private static Main ephemeral_topic;
     public static Guild guild;
     public static Logger logger;
 
@@ -63,12 +61,17 @@ public class Main
         {
             try
             {
-                Main BotInstance = new Main( args );
+                Main ephemeral_topic = new Main( args );
+                ephemeral_topic.jda.awaitReady();
+                // TODO configLoader
             }
             catch ( LoginException e )
             {
                 logger.fatal(ErrorMsgTemp.LOGIN_EXCEPTION.get());
                 e.printStackTrace();
+            } catch ( InterruptedException ignore )
+            {
+                // This exception is not raised except during awaitReady, but it is not raised by this code, so ignore
             }
         }
     }
@@ -76,6 +79,7 @@ public class Main
     public static void exit ( int code, String msg )
     {
         // TODO shutdown jda object
+        ephemeral_topic.jda.shutdown();
         if ( code < 1 )
         {
             logger .info(msg);
